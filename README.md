@@ -22,13 +22,14 @@ subset_data_channeltype_distribution(data,1000)
 ```python
 subset_data_frame = data.head(1000)
 
-# A file named as "youtube_subset" will be exported to the same directory. Index set to false means removing the index column of a dataframe while exporting the file
+# A file named as "youtube_subset" will be exported to the same directory. 
+# Index set to false means removing the index column of a dataframe while exporting the file
 subset_data_frame.to_csv("youtube_subset.csv", index=False) 
 ```
 
 - ### Read the Top 1000 records file created in Step 4
 ```python
-# Replace the text inside the read_csv with the path of the file created in the above step
+# Substitute the text inside the read_csv with the path of the file created in the above step
 first_1k_data = pd.read_csv(r"Path to the file youtube_subset.csv saved in above step") 
 ```
 
@@ -37,23 +38,23 @@ first_1k_data = pd.read_csv(r"Path to the file youtube_subset.csv saved in above
 ### Database connection
 ```python
 from sqlalchemy import create_engine
-# Replace user_name, database_password and host_name as your's mysql connection
-sqlEngine = create_engine('mysql+pymysql://user_name:database_password@host_name') 
+# Substitute user_name, username_password and host_name as your's mysql connection
+sqlEngine = create_engine('mysql+pymysql://user_name:username_password@host_name') 
 dbConnection = sqlEngine.connect()
 ```
-### Create a new database
+### Creating New Database
 ```python
 with sqlEngine.connect() as conn:
     conn.execute("commit")
-    conn.execute(f"CREATE DATABASE database_name")  # Replace database_name with the actual database name you need to create
+    conn.execute(f"CREATE DATABASE databaseName")  # Substitute database name with the one you wish to use
 ```
-### Create a new table and import the csv file generated in Step 2 into it
+### Creating a table within the database created above and importing data
 ```python
-# Replace table_name and database_name with the table name you want to create and use the same database name as used in the create statement
-first_1k_data.to_sql('table_name',con=sqlEngine, schema = 'database_name',index=False,if_exists='append')
+# Substitute tableName and databaseName with the table name you want to create and use the same database name as used in the create database command
+first_1k_data.to_sql('tableName',con=sqlEngine, schema = 'databaseName',index=False,if_exists='append')
 ```
-### Read data from the table created in previous step and display it
+### Reading data inserted in previous step to a dataframae
 ```python
-# Replace table_name and database_name with the table name and database name used in the steps above
-frame = pd.read_sql("select * from database_name.table_name", dbConnection); 
+# Substitute tableName and databaseName with the one's created in above steps
+frame = pd.read_sql("select * from databaseName.tableName", dbConnection); 
 pd.set_option('display.expand_frame_repr', False)
