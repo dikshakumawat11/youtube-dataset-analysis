@@ -5,7 +5,7 @@
 import pandas as pd
 import numpy as np
 
-data=pd.read_csv(r" Path to youtube_dataset.csv", encoding='cp1252')
+data=pd.read_csv(r"Path to youtube_dataset.csv", encoding='cp1252')
 data.head()  
 ```
 - ### Function to calculate the distributuion of channel type from the top 1000 records
