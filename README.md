@@ -29,7 +29,7 @@ subset_data_frame.to_csv("youtube_subset.csv", index=False)
 
 - ### Read the CSV file created in previous Step
 ```python
-# Substitute the text inside the read_csv with the path of the file created in the above step
+# Substitute the text inside the read_csv with the path of the file created in the above step- hiding the sensitive information as mentioned in the requirements
 first_1k_data = pd.read_csv(r"Path to the file youtube_subset.csv saved in above step") 
 ```
 
